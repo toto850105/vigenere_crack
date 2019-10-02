@@ -10,15 +10,19 @@ def is_int(st):
 
 if __name__ == "__main__":
     st = ""
-    with open("st.txt", "r") as f:
-        st = f.read().strip().lower()
+    try:
+        with open("st.txt", "r") as f:
+            st = f.read().strip().lower()
+    except:
+        print("st.txt is not exist!")
+        st = input("Enter Chipertext: ").strip().lower()
 
     show_freq(st, 20)
 
     while True:
         command = input("set key length, or press q to quit.\n")
         if command == "q":
-            print("Bye")
+            print("Bye~~")
             break
         elif is_int(command):
             crack(st, int(command))
